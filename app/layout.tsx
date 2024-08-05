@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
 import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
@@ -21,7 +22,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <ClerkLoading>
-            <div className="flex items-center justify-center h-screen text-2xl">
+            <div className="flex items-center bg-[#FAFAF9] justify-center h-screen text-2xl">
               LOADING...
             </div>
           </ClerkLoading>

@@ -1,9 +1,18 @@
+import GetFree from "@/components/Home/GetFree";
+import Hero from "@/components/Home/Hero";
+import HeroAnimations from "@/components/Home/hero-animations";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="flex flex-col items-center justify-center">
+
+      <Hero />
+
+      <HeroAnimations />
+
+      <GetFree />
       
       <div className="flex flex-col text-center items-center gap-x-4 font-bold text-2xl ">
       <h1>Routes</h1>

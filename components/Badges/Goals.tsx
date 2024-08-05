@@ -6,7 +6,7 @@ const Goals = () => {
   return (
     <div>
         <Badge className='bg-[#E8F4FF] text-[#31A8FF]'>
-        <CalendarCheck />
+        <CalendarCheck  size={40} />
         </Badge>
     </div>
   )

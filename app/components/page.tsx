@@ -1,5 +1,4 @@
 import Badges from '@/components/Badges'
-
 import Goals from '@/components/Badges/Goals'
 import Resources from '@/components/Badges/Resources'
 import Star from '@/components/Badges/Star'
