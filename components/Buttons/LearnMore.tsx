@@ -6,7 +6,7 @@ const LearnMore = () => {
   return (
     <div>
         <Link href='start-now'>
-        <Buttons className='bg-[#FAFAF9] text-[#44403C]'>
+        <Buttons className='bg-[#FAFAF9] hover:bg-[#FAFAF8]  text-[#44403C]'>
             Learn More
         </Buttons>
         </Link>
