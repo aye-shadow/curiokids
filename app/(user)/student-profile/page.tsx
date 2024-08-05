@@ -1,9 +1,12 @@
+import ChooseGoals from '@/components/ChooseGoals'
 import React from 'react'
 
-const page = () => {
+const StudentProfile = () => {
   return (
-    <div>page</div>
+    <div>
+        <ChooseGoals />
+    </div>
   )
 }
 
-export default page
+export default StudentProfile

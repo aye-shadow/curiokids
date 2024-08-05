@@ -1,3 +1,5 @@
+import Benifits from "@/components/Benifits";
+import Chooseus from "@/components/Chooseus";
 import GetFree from "@/components/Home/GetFree";
 import Hero from "@/components/Home/Hero";
 import HeroAnimations from "@/components/Home/hero-animations";
@@ -13,6 +15,10 @@ export default function Home() {
       <HeroAnimations />
 
       <GetFree />
+
+      <Benifits />
+
+      <Chooseus />
       
       <div className="flex flex-col text-center items-center gap-x-4 font-bold text-2xl ">
       <h1>Routes</h1>
