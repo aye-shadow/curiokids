@@ -11,6 +11,14 @@ body {
   line-height: normal;
 }
 
+.feather {
+  width: 1em;
+  height: 1em;
+  stroke-width: 2;
+  stroke: currentColor;
+  fill: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

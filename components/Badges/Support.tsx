@@ -6,7 +6,7 @@ const Support = () => {
   return (
     <div>
         <Badge className='bg-[#FFE8E8] text-[#FF3131]' >
-        <MessageSquareMore />
+        <MessageSquareMore  size={40} />
         </Badge>
     </div>
   )
