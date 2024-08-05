@@ -7,7 +7,7 @@ const AndMore = () => {
     <div>
         <Link href={'/about'}>
           <Buttons className='bg-[#14B8A5] hover:bg-[#14B8A6] rounded-full'>
-            and more
+            And More
           </Buttons>
         </Link>
     </div>
