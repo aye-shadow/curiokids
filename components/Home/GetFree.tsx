@@ -47,6 +47,9 @@ const GetFree = () => {
 
         </div>
        
+       <div className='flex items-center justify-center'>
+        <AndMore />
+       </div>
         
       </div>
     </section>

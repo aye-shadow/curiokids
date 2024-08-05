@@ -6,7 +6,7 @@ const GetStarted = () => {
   return (
     <div>
         <Link href='/start-now'>
-        <Buttons className='bg-[#14B8A5]'>
+        <Buttons className='bg-[#14B8A5] hover:bg-[#14B8A6]'>
             Get Started
         </Buttons>
         </Link>

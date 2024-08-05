@@ -8,7 +8,7 @@ const Login: React.FC<ButtonProps> = ({ className, children, ...props }) => {
   return (
     <div>
         <Link href={'/sign-in'}>
-         <Buttons className='bg-[#14B8A5]'>
+         <Buttons className='bg-[#14B8A5] hover:bg-[#14B8A5]'>
             Log-in
          </Buttons>
          </Link>              
