@@ -1,14 +1,14 @@
-import React from 'react';
-import Link from 'next/link';
-import { auth } from '@clerk/nextjs/server';
-import { UserButton } from '@clerk/nextjs';
-import { Button } from '@/components/ui/button';
-import Logo from '@/components/Logo';
-import Login from '@/components/Buttons/Login';
+import React from "react";
+import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
+import { UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
+import Login from "@/components/Buttons/Login";
 
 const Navbar = () => {
   const { userId } = auth();
-  
+
   return (
     <header className="flex h-16 w-full items-center justify-between bg-background px-4 md:px-6">
       <Link href="/" className="flex items-center gap-2" prefetch={false}>
@@ -37,7 +37,7 @@ const Navbar = () => {
           Contact
         </Link>
       </nav>
-      
+
       <div className="flex items-center gap-4">
         {!userId ? (
           <Login />
