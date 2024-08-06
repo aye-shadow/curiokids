@@ -1,29 +1,32 @@
 'use client';
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import dynamic from 'next/dynamic';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   HomeIcon,
-  BookIcon,
-  BugIcon,
-  FileTextIcon,
-  BotIcon,
-  BarChartIcon,
-  BellIcon,
-  SettingsIcon,
+   BookIcon,
+   BugIcon,
+   FileTextIcon,
+   BotIcon,
+   BarChartIcon,
+   BellIcon,
+   LogOutIcon,
+   SettingsIcon,
 } from 'lucide-react';
-import Logo from "../Logo";
-import { UserButton } from '@clerk/nextjs';
 
-const Home = dynamic(() => import('./Home'), { ssr: false });
-const Library = dynamic(() => import('./Library'), { ssr: false });
-const Quiz = dynamic(() => import('./Quiz'), { ssr: false });
-const Report = dynamic(() => import('./Report'), { ssr: false });
-const AI = dynamic(() => import('./AI'), { ssr: false });
-const Chart = dynamic(() => import('./Chart'), { ssr: false });
-const Updates = dynamic(() => import('./Update'), { ssr: false });
-const Settings = dynamic(() => import('./Setting'), { ssr: false });
+// Import your components for different sections
+import Logo from "../Logo"
+import Home from './Home';
+import Library from './Library';
+import Quiz from './Quiz';
+import Report from './Report';
+import AI from './AI';
+import Chart from './Chart';
+import Updates from './Update';
+import Settings from './Setting';
+import { UserButton } from '@clerk/nextjs';
 
 const Sidebar = () => {
   const [currentPath, setCurrentPath] = useState('');
@@ -35,44 +38,17 @@ const Sidebar = () => {
     }
   }, []);
 
-  const handleSetActiveComponent = useCallback((component: string) => {
-    setActiveComponent(component);
-  }, []);
-
-  const renderActiveComponent = useMemo(() => {
-    switch (activeComponent) {
-      case 'Home':
-        return <Home />;
-      case 'Library':
-        return <Library />;
-      case 'Quiz':
-        return <Quiz />;
-      case 'Report':
-        return <Report />;
-      case 'AI':
-        return <AI />;
-      case 'Chart':
-        return <Chart />;
-      case 'Updates':
-        return <Updates />;
-      case 'Settings':
-        return <Settings />;
-      default:
-        return <Home />;
-    }
-  }, [activeComponent]);
-
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <aside className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col border-r bg-background sm:w-60">
-        <div className="flex h-16 items-center justify-center">
+        <div className="flex h-16 items-center justify-center sm:justify-start">
           <Link href="#" className="flex items-center gap-2 px-4" prefetch={false}>
             <Logo />
           </Link>
         </div>
         <nav className="flex flex-1 flex-col items-start gap-2 px-2 py-4 sm:px-4">
           <Button
-            onClick={() => handleSetActiveComponent('Home')}
+            onClick={() => setActiveComponent('Home')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Home' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -81,7 +57,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">Home</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('Library')}
+            onClick={() => setActiveComponent('Library')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Library' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -90,7 +66,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">Library</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('Quiz')}
+            onClick={() => setActiveComponent('Quiz')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Quiz' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -99,7 +75,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">Quiz</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('Report')}
+            onClick={() => setActiveComponent('Report')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Report' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -108,7 +84,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">Report</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('AI')}
+            onClick={() => setActiveComponent('AI')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'AI' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -117,7 +93,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">AI</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('Chart')}
+            onClick={() => setActiveComponent('Chart')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Chart' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -126,7 +102,7 @@ const Sidebar = () => {
             <span className="hidden sm:block">Chart</span>
           </Button>
           <Button
-            onClick={() => handleSetActiveComponent('Updates')}
+            onClick={() => setActiveComponent('Updates')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Updates' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -137,7 +113,7 @@ const Sidebar = () => {
         </nav>
         <div className="mt-auto flex flex-col items-start gap-2 px-2 py-4 sm:px-4">
           <Button
-            onClick={() => handleSetActiveComponent('Settings')}
+            onClick={() => setActiveComponent('Settings')}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
               activeComponent === 'Settings' ? "bg-accent text-accent-foreground" : ""
             }`}
@@ -149,7 +125,14 @@ const Sidebar = () => {
         </div>
       </aside>
       <div className="flex flex-1 flex-col p-4">
-        {renderActiveComponent}
+        {activeComponent === 'Home' && <Home />}
+        {activeComponent === 'Library' && <Library />}
+        {activeComponent === 'Quiz' && <Quiz />}
+        {activeComponent === 'Report' && <Report />}
+        {activeComponent === 'AI' && <AI />}
+        {activeComponent === 'Chart' && <Chart />}
+        {activeComponent === 'Updates' && <Updates />}
+        {activeComponent === 'Settings' && <Settings />}
       </div>
     </div>
   );
