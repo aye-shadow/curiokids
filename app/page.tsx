@@ -3,15 +3,15 @@ import Chooseus from "@/components/Chooseus";
 import GetFree from "@/components/Home/GetFree";
 import Hero from "@/components/Home/Hero";
 import HeroAnimations from "@/components/Home/hero-animations";
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center">
-
+      <Navbar />
       <Hero />
-
       <HeroAnimations />
 
       <GetFree />
