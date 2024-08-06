@@ -1,8 +1,13 @@
+import Sidebar from '@/components/Sidebar'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>Student Dashboard</div>
+    <div>
+      
+     <Sidebar />
+
+    </div>
   )
 }
 
