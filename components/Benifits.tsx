@@ -14,13 +14,12 @@ const Benifits = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl
                 nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.
               </p>
-            
                 <ViewAll />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6 mt-8">
             <Card className="h-[300px] flex-1">
-              <CardContent className="flex flex-col gap-4 relative justify-between items-start">
+              <CardContent className="flex flex-col gap-4 relative justify-around items-start">
                 <div className="absolute top-2 right-2 text-black text-6xl font-extrabold">01</div>
                 <h3 className="text-xl font-semibold">Flexible Learning Schedule</h3>
                 <p className="text-muted-foreground">Fit your coursework around your existing commitments and obligations.</p>
