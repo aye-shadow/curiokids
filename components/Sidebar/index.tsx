@@ -26,6 +26,7 @@ import AI from './AI';
 import Chart from './Chart';
 import Updates from './Update';
 import Settings from './Setting';
+import { UserButton } from '@clerk/nextjs';
 
 const Sidebar = () => {
   const [currentPath, setCurrentPath] = useState('');
@@ -120,38 +121,7 @@ const Sidebar = () => {
             <SettingsIcon className="h-5 w-5" />
             <span className="hidden sm:block">Settings</span>
           </Button>
-          <Link
-            href="/logout"
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
-              currentPath === "/logout" ? "bg-accent text-accent-foreground" : ""
-            }`}
-            prefetch={false}
-          >
-            <LogOutIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Logout</span>
-          </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" className="ml-auto rounded-full">
-                <img
-                  src="/placeholder.svg"
-                  width={36}
-                  height={36}
-                  alt="Avatar"
-                  className="rounded-full"
-                  style={{ aspectRatio: "36/36", objectFit: "cover" }}
-                />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserButton />
         </div>
       </aside>
       <div className="flex flex-1 flex-col p-4">
