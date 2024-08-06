@@ -13,6 +13,8 @@ import Chart from './Chart';
 import Updates from './Update';
 import Settings from './Settings';
 import Logo from '../Logo';
+import { SignOutButton } from "@clerk/nextjs";
+
 
 const Sidebar = () => {
   const [currentPath, setCurrentPath] = useState('');
@@ -137,7 +139,7 @@ const Sidebar = () => {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem><SignOutButton /></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
