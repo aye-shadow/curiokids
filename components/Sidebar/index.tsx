@@ -4,7 +4,6 @@ import Link from "next/link";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-// Import your components for different sections
 import Home from './Home';
 import Library from './Library';
 import Quiz from './Quiz';
@@ -13,6 +12,7 @@ import AI from './AI';
 import Chart from './Chart';
 import Updates from './Update';
 import Settings from './Settings';
+import Logo from '../Logo';
 
 const Sidebar = () => {
   const [currentPath, setCurrentPath] = useState('');
@@ -26,11 +26,11 @@ const Sidebar = () => {
 
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
-      <aside className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col border-r bg-background sm:w-60">
-        <div className="flex h-16 items-center justify-center sm:justify-start">
+      <aside className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col
+       border-r bg-background sm:w-60">
+        <div className="flex h-16 items-center justify-center">
           <Link href="#" className="flex items-center gap-2 px-4" prefetch={false}>
-            <MountainIcon className="h-6 w-6" />
-            <span className="text-lg font-bold sm:block">Acme Inc</span>
+                <Logo />
           </Link>
         </div>
         <nav className="flex flex-1 flex-col items-start gap-2 px-2 py-4 sm:px-4">
