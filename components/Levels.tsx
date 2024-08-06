@@ -34,7 +34,7 @@ const Level = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-      <h1 className="text-2xl font-bold mb-4 text-gray-800">What's Your Level</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-800">Whats Your Level</h1>
       <p className="mb-6 text-gray-600 text-center">Choose your current level. We will suggest the best lesson for you.</p>
       <div className="space-y-4 w-full max-w-md">
         {levels.map((level) => (
