@@ -22,24 +22,24 @@ const Benifits = () => {
             <Card className="h-[300px] flex-1">
               <CardContent className="flex flex-col gap-4 relative justify-between items-start">
                 <div className="absolute top-2 right-2 text-black text-6xl font-extrabold">01</div>
-                <h3 className="text-xl font-semibold">Personalized Learning</h3>
-                <p className="text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3 className="text-xl font-semibold">Flexible Learning Schedule</h3>
+                <p className="text-muted-foreground">Fit your coursework around your existing commitments and obligations.</p>
                 <Arrow />
               </CardContent>
             </Card>
             <Card className="h-[300px] flex-1">
               <CardContent className="flex flex-col gap-4 relative justify-between items-start">
                 <div className="absolute top-2 right-2 text-black text-6xl font-extrabold">02</div>
-                <h3 className="text-xl font-semibold">Expert Instructors</h3>
-                <p className="text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3 className="text-xl font-semibold">Expert Instruction</h3>
+                <p className="text-muted-foreground">Learn from industry experts who have hands-on experience in design and development.</p>
                 <Arrow />
               </CardContent>
             </Card>
             <Card className="h-[300px] flex-1">
               <CardContent className="flex flex-col gap-4 relative justify-between items-start">
                 <div className="absolute top-2 right-2 text-black text-6xl font-extrabold">03</div>
-                <h3 className="text-xl font-semibold">Flexible Scheduling</h3>
-                <p className="text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3 className="text-xl font-semibold">Updated Curriculum</h3>
+                <p className="text-muted-foreground">Access courses with up-to-date content reflecting the latest trends and industry practices.</p>
                   <Arrow />
               </CardContent>
             </Card>

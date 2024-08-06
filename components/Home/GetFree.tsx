@@ -11,7 +11,7 @@ const GetFree = () => {
       <div className="container grid gap-8 px-4 md:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tighter font-feathers sm:text-4xl
-           md:text-5xl ">Get Eveything for FREE!</h2>
+           md:text-5xl ">Get Everything for FREE!</h2>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mt-5">
           <div className="flex flex-col items-center gap-2">

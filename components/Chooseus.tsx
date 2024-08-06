@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Star from './Badges/Star';
+import Smilinggirl from "./Smilinggirl";
 
 const Chooseus = () => {
   return (
@@ -6,33 +8,23 @@ const Chooseus = () => {
     <div className="container max-w-7xl px-4 md:px-6 grid md:grid-cols-2 gap-8">
       <div className="max-w-2xl">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why choose us</h2>
-        <p className="text-base md:text-lg text-white">
-          Explore a wide range of courses and connect with expert instructors.
-        </p>
         <div className="mt-6 space-y-4">
           <div className="flex items-start gap-4">
-            <StarIcon className="w-6 h-6 text-white" />
-            <p className="text-base md:text-lg text-white">Personalized learning experience</p>
+            <Star />
+            <p className="text-base md:text-lg text-white">Access a wide range of interactive lessons tailored to all learning styles.</p>
           </div>
           <div className="flex items-start gap-4">
-            <StarIcon className="w-6 h-6 text-white" />
-            <p className="text-base md:text-lg text-white">Expert instructors</p>
+          <Star />
+            <p className="text-base md:text-lg text-white">Learn from high-quality materials, ensuring reliable and up-to-date content.</p>
           </div>
           <div className="flex items-start gap-4">
-            <StarIcon className="w-6 h-6 text-white" />
-            <p className="text-base md:text-lg text-white">Flexible scheduling</p>
+          <Star />
+            <p className="text-base md:text-lg text-white">Join a vibrant community for real-time support and feedback.</p>
           </div>
         </div>
       </div>
       <div className="flex justify-end">
-        <img
-          src="/placeholder.svg"
-          alt="Smiling girl"
-          width={400}
-          height={500}
-          className="rounded-lg shadow-lg"
-          style={{ aspectRatio: "400/500", objectFit: "cover" }}
-        />
+       <Smilinggirl />
       </div>
     </div>
   </section>
