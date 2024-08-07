@@ -11,11 +11,13 @@ const Level = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const goalsQuery = searchParams.get('goals');
-    if (goalsQuery) {
-      setGoals(goalsQuery);
-    } else {
-      router.push('/');
+    if (searchParams) {
+      const goalsQuery = searchParams.get('goals');
+      if (goalsQuery) {
+        setGoals(goalsQuery);
+      } else {
+        router.push('/');
+      }
     }
   }, [searchParams, router]);
 
