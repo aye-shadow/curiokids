@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "prismaDev": "dotenv -e .env.local prisma migrate dev "
+    "prismaDev": "dotenv -e .env.local prisma migrate dev"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.14",
