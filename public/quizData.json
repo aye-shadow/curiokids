@@ -1,0 +1,28 @@
+{
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the capital of France?",
+        "options": ["Paris", "London", "Berlin", "Madrid"],
+        "correctAnswer": "Paris"
+      },
+      {
+        "type": "mcq",
+        "question": "Which language is used for web development?",
+        "options": ["Python", "JavaScript", "C++", "Java"],
+        "correctAnswer": "JavaScript"
+      },
+      {
+        "type": "fitb",
+        "question": "HTML stands for _______ Markup Language.",
+        "options": ["HyperText", "HighText", "HyperTransfer", "HyperTerminal"],
+        "correctAnswer": "HyperText"
+      },
+      {
+        "type": "fitb",
+        "question": "CSS stands for Cascading _______ Sheets.",
+        "options": ["Style", "Script", "Syntax", "Sheet"],
+        "correctAnswer": "Style"
+      }
+        ]
+  }
