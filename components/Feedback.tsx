@@ -6,8 +6,8 @@ const Form: React.FC = () => {
   return (
     <div
       style={{
-        width: 400,
-        height: 400,
+        width: 1000,
+        height: 800,
       }}
     >
       <FilloutStandardEmbed filloutId="7kh4wquKJ6us" />
