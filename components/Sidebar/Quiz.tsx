@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react';
 import quizData from '../../public/quizData.json';
+import { Button } from '../ui/button';
 
 interface Question {
   type: 'mcq' | 'fitb';
@@ -103,12 +104,13 @@ const QuizPage = () => {
         <div className="text-center">
           <h1 className="text-3xl font-bold">Your Quiz</h1>
           <p className="text-xl mt-2">Welcome to the quiz. Press the button below to start.</p>
-          <button
+          <Button
+          variant={'userFlow'}
             onClick={startQuiz}
-            className="bg-blue-500 text-white p-4 mt-4 rounded"
+            className="p-4 mt-4 rounded"
           >
             Start Your Quiz
-          </button>
+          </Button>
           {quizCanceled && (
             <div className="text-red-500 mt-4">
               Your quiz has been canceled because you exited fullscreen mode.
