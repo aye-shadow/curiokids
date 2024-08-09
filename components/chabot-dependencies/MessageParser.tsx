@@ -3,13 +3,15 @@ import React, { ReactNode } from 'react';
 interface MessageParserProps {
   children: ReactNode;
   actions: {
-    [key: string]: (...args: any[]) => void;
+    handleHello: () => void;
   };
 }
 
 const MessageParser: React.FC<MessageParserProps> = ({ children, actions }) => {
   const parse = (message: string): void => {
-    console.log(message);
+    if (message.includes('hello')) {
+      actions.handleHello();
+    }
   };
 
   return (
