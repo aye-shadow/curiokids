@@ -36,8 +36,8 @@ const ChooseGoals = () => {
           <Button 
           variant={'userFlow'}
             key={label}
-            className={`flex items-center justify-center w-full  text-center
-               p-4 rounded-lg transition-colors duration-200 h-[70px]
+            className={`flex items-center justify-center w-full  text-center text-[#44403C]
+               p-4 rounded-lg transition-colors duration-200 h-[60px] text-lg font-bold
               ${selectedGoals.includes(label) ? 'bg-[#14B8A5] text-white' : 'bg-[#ebffe2] text-gray-800'}`}
             onClick={() => toggleGoal(label)}
           >
@@ -48,9 +48,12 @@ const ChooseGoals = () => {
       </div>
       <Button
       variant={'continue'}
-        className="mt-6 p-4 w-full max-w-md rounded-lg border text-xl font-semibold font-mono border-b-2
-          border-t-[1px]  border-[#44403C] transition-colors duration-200"
+        className="mt-6 p-4 w-full max-w-md rounded-lg border text-2xl font-semibold font-mono
+         border-b-[2px] bg-white
+          border-t-[1.5px]  border-[#44403C] transition-colors duration-200"
         onClick={handleContinue}
+        disabled={!goals}
+
       >
         Continue
       </Button>

@@ -1,139 +1,104 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from "next/link";
-import { useRouter, useSearchParams } from 'next/navigation';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   HomeIcon,
-   BookIcon,
-   BugIcon,
-   FileTextIcon,
-   BotIcon,
-   BarChartIcon,
-   BellIcon,
-   LogOutIcon,
-   SettingsIcon,
+  BookIcon,
+  BugIcon,
+  FileTextIcon,
+  BotIcon,
+  BarChartIcon,
+  BellIcon,
+  SettingsIcon,
 } from 'lucide-react';
 
-// Import your components for different sections
-import Logo from "../Logo"
+import Logo from "../Logo";
 import Home from './Home';
 import Library from './Library';
 import Quiz from './Quiz';
 import Report from './Report';
 import AI from './AI';
-import Chart from './Chart';
 import Updates from './Update';
 import Settings from './Setting';
 import { UserButton } from '@clerk/nextjs';
+import LeaderBoard from './LeaderBoard';
 
 const Sidebar = () => {
-  const [currentPath, setCurrentPath] = useState('');
   const [activeComponent, setActiveComponent] = useState('Home');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentPath(window.location.pathname);
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'Home':
+        return <Home />;
+      case 'Library':
+        return <Library />;
+      case 'Quiz':
+        return <Quiz />;
+      case 'Report':
+        return <Report />;
+      case 'AI':
+        return <AI />;
+      case 'Leader Board':  // Updated this case to match the button label
+        return <LeaderBoard />;
+      case 'Updates':
+        return <Updates />;
+      case 'Settings':
+        return <Settings />;
+      default:
+        return <Home />;
     }
-  }, []);
+  };
 
   return (
-    <div className="flex min-h-screen w-full bg-muted/40">
-      <aside className="fixed inset-y-0 left-0 z-10 flex h-full w-14 flex-col border-r bg-background sm:w-60">
-        <div className="flex h-16 items-center justify-center sm:justify-start">
+    <div className="flex min-h-screen w-full bg-[#FAFAF9]">
+      <aside className="fixed inset-y-0 left-0 z-10 flex h-full w-16 flex-col border-r 
+       text-[#44403C] sm:w-64 transition-all bg-[#EFFFE8]">
+        <div className="flex h-16 items-center justify-center sm:justify-start sm:px-4 ">
           <Link href="#" className="flex items-center gap-2 px-4" prefetch={false}>
             <Logo />
           </Link>
         </div>
-        <nav className="flex flex-1 flex-col items-start gap-2 px-2 py-4 sm:px-4">
-          <Button
-            onClick={() => setActiveComponent('Home')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Home' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <HomeIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Home</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('Library')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Library' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <BookIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Library</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('Quiz')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Quiz' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <BugIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Quiz</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('Report')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Report' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <FileTextIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Report</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('AI')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'AI' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <BotIcon className="h-5 w-5" />
-            <span className="hidden sm:block">AI</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('Chart')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Chart' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <BarChartIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Chart</span>
-          </Button>
-          <Button
-            onClick={() => setActiveComponent('Updates')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Updates' ? "bg-accent text-accent-foreground" : ""
-            }`}
-          >
-            <BellIcon className="h-5 w-5" />
-            <span className="hidden sm:block">Updates</span>
-          </Button>
+        <nav className="flex flex-1 flex-col items-start gap-3 px-2 py-4 sm:px-4 text-base font-semibold">
+          {[
+            { name: 'Home', icon: <HomeIcon className="h-6 w-6" /> },
+            { name: 'Leader Board', icon: <BarChartIcon className="h-6 w-6" /> },  // This should match the case in renderComponent
+            { name: 'Quiz', icon: <BugIcon className="h-6 w-6" /> },
+            { name: 'Library', icon: <BookIcon className="h-6 w-6" /> },
+            { name: 'AI', icon: <BotIcon className="h-6 w-6" /> },
+            { name: 'Report', icon: <FileTextIcon className="h-6 w-6" /> },
+            { name: 'Notifications', icon: <BellIcon className="h-6 w-6" /> }
+          ].map(({ name, icon }) => (
+            <Button
+              key={name}
+              onClick={() => setActiveComponent(name)}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm border-[#44403C] border-x-[1.5px] border-b-[3px] border-t-[1px]
+                transition-colors bg-[#FAFAF9] text-[#2e2e2e] hover:bg-[#14B8A5] hover:text-white ${
+                activeComponent === name ? "bg-[#14B8A5] text-[#FAFAF9] shadow-lg" : ""
+              }`}
+            >
+              {icon}
+              <span className="hidden sm:block">{name}</span>
+            </Button>
+          ))}
         </nav>
-        <div className="mt-auto flex flex-col items-start gap-2 px-2 py-4 sm:px-4">
+        <div className="mt-auto flex flex-col items-start gap-3 px-2 py-4 sm:px-4">
           <Button
             onClick={() => setActiveComponent('Settings')}
-            className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none ${
-              activeComponent === 'Settings' ? "bg-accent text-accent-foreground" : ""
+            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm border-[#44403C] border-x-[1.5px] border-b-[3px] border-t-[1px]
+              transition-colors bg-white text-[#2e2e2e] hover:bg-[#14B8A5] hover:text-white ${
+              activeComponent === 'Settings' ? "bg-[#14B8A5] text-white shadow-lg" : ""
             }`}
           >
-            <SettingsIcon className="h-5 w-5" />
+            <SettingsIcon className="h-6 w-6" />
             <span className="hidden sm:block">Settings</span>
           </Button>
-          <UserButton />
+          <UserButton showName userProfileMode='modal' />
         </div>
       </aside>
-      <div className="flex flex-1 flex-col p-4">
-        {activeComponent === 'Home' && <Home />}
-        {activeComponent === 'Library' && <Library />}
-        {activeComponent === 'Quiz' && <Quiz />}
-        {activeComponent === 'Report' && <Report />}
-        {activeComponent === 'AI' && <AI />}
-        {activeComponent === 'Chart' && <Chart />}
-        {activeComponent === 'Updates' && <Updates />}
-        {activeComponent === 'Settings' && <Settings />}
-      </div>
+      <main className="flex-1 ml-16 sm:ml-64 p-6 bg-[#FAFAF9] transition-all">
+        {renderComponent()}
+      </main>
     </div>
   );
 };

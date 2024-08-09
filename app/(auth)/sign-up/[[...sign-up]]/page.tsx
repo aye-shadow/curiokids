@@ -6,7 +6,7 @@ export default async function Page() {
 
   return (
     <div className="flex items-center justify-center h-full">
-      <SignUp forceRedirectUrl={"/student-profile"} afterSignOutUrl="/" />
+      <SignUp afterSignUpUrl={"/student-profile"} afterSignOutUrl="/" />
     </div>
   );
 }
