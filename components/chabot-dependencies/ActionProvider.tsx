@@ -2,8 +2,12 @@ import React, { ReactNode } from 'react';
 
 interface ActionProviderProps {
   createChatBotMessage: (message: string, options?: any) => any;
-  setState: React.Dispatch<React.SetStateAction<any>>;
+  setState: React.Dispatch<React.SetStateAction<State>>;
   children: ReactNode;
+}
+
+interface State {
+  messages: any[]; // Adjust the type if you have a specific structure for messages
 }
 
 const ActionProvider: React.FC<ActionProviderProps> = ({ createChatBotMessage, setState, children }) => {
