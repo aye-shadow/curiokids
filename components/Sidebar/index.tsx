@@ -59,7 +59,8 @@ const Sidebar = () => {
             <Logo />
           </Link>
         </div>
-        <nav className="flex flex-1 flex-col items-start gap-3 px-2 py-4 sm:px-4 text-base font-semibold">
+        <nav className="flex flex-1 flex-col items-start gap-3 px-2 py-4 sm:px-4 text-base 
+        font-semibold">
           {[
             { name: 'Home', icon: <HomeIcon className="h-6 w-6" /> },
             { name: 'Leader Board', icon: <BarChartIcon className="h-6 w-6" /> },  // This should match the case in renderComponent
@@ -96,7 +97,7 @@ const Sidebar = () => {
           <UserButton showName userProfileMode='modal' />
         </div>
       </aside>
-      <main className="flex-1 ml-16 sm:ml-64 p-6 bg-[#FAFAF9] transition-all">
+      <main className="flex-1 ml-3 p-6 bg-zinc-950 transition-all">
         {renderComponent()}
       </main>
     </div>
