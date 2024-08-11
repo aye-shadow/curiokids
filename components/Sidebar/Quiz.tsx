@@ -42,10 +42,14 @@ const QuizPage = () => {
   };
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < quizData.questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (answers[currentQuestionIndex]) {
+      if (currentQuestionIndex < quizData.questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        finishQuiz();
+      }
     } else {
-      finishQuiz();
+      alert('Please select an option before proceeding to the next question.');
     }
   };
 
@@ -102,12 +106,12 @@ const QuizPage = () => {
     <div className="container mx-auto p-4">
       {!quizStarted ? (
         <div className="text-center">
-          <h1 className="text-3xl font-bold">Your Quiz</h1>
-          <p className="text-xl mt-2">Welcome to the quiz. Press the button below to start.</p>
+          <h1 className="scroll-m-20 text-5xl font-semibold tracking-tight">Your Monthly Quiz</h1>
+          <p className="text-xl mt-5">Welcome to the quiz. Press the button below to start.</p>
           <Button
-          variant={'userFlow'}
+          
             onClick={startQuiz}
-            className="p-4 mt-4 rounded"
+            className="p-4 mt-4 rounded bg-[#14B8A5] border border-black border-x-[1.5px] border-b-[3px] border-t-[1px] "
           >
             Start Your Quiz
           </Button>
@@ -120,14 +124,14 @@ const QuizPage = () => {
       ) : (
         <div className="text-center">
           <h2 className="text-2xl font-bold">Question {currentQuestionIndex + 1}</h2>
-          <p className="text-xl mt-2">{currentQuestion.question}</p>
+          <p  className="text-xl text-muted-foreground">{currentQuestion.question}</p>
           <div className="mt-4">
             {currentQuestion.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(currentQuestionIndex, option)}
-                className={`border p-2 w-full mt-2 ${
-                  answers[currentQuestionIndex] === option ? 'bg-blue-500 text-white' : ''
+                className={`text-[#2e2e2e] border border-[#44403C] border-x-[1.5px] border-b-[5px] border-t-[1px] p-2 w-full mt-2 ${
+                  answers[currentQuestionIndex] === option ? 'bg-[#14B8A5]  text-white-white ' : ''
                 }`}
               >
                 {option}
@@ -136,7 +140,8 @@ const QuizPage = () => {
           </div>
           <button
             onClick={handleNextQuestion}
-            className="bg-green-500 text-white p-4 mt-4 rounded"
+            className="bg-green-500 text-white p-4 mt-4 rounded order border-[#44403C] border-x-[1.5px] border-b-[5px] border-t-[2px]"
+            disabled={!answers[currentQuestionIndex]}
           >
             {currentQuestionIndex < quizData.questions.length - 1 ? 'Next' : 'Finish'}
           </button>
