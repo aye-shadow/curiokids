@@ -16,21 +16,21 @@ const Navbar = () => {
       </Link>
       <nav className="hidden lg:flex items-center gap-6">
         <Link
-          href="#"
+          href="/"
           className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           prefetch={false}
         >
           Home
         </Link>
         <Link
-          href="#"
+          href="/about"
           className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           prefetch={false}
         >
           About
         </Link>
         <Link
-          href="#"
+          href="/contact"
           className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           prefetch={false}
         >
