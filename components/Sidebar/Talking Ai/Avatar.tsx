@@ -1,51 +1,66 @@
-"use client"
 import React, { useState } from 'react';
-import axios from 'axios';
 
-const Avatar3D = () => {
+const Avatar: React.FC = () => {
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [conversationId, setConversationId] = useState<string | null>(null);
 
-  const handleSendMessage = async () => {
-    // Call OpenAI API for conversation
-    const aiResponse = await axios.post('/api/openai', { message });
-    setResponse(aiResponse.data.reply);
+  const handleSubmit = async () => {
+    // Send the message to the OpenAI Assistant API
+    const chatResponse = await fetch('/api/assistant', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ conversationId, prompt: message }),
+    });
 
-    // Call Eleven Labs API to convert AI response to speech
-    await axios.post('/api/elevenlabs', { text: aiResponse.data.reply });
+    const chatData = await chatResponse.json();
+    setResponse(chatData.response);
+
+    // Generate a new conversationId if necessary
+    if (!conversationId) {
+      setConversationId(chatData.conversationId);
+    }
+
+    // Send the response to the Eleven Labs API for speech synthesis
+    const speechResponse = await fetch('/api/speech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: chatData.response }),
+    });
+
+    const audioBlob = await speechResponse.blob();
+    setAudioUrl(URL.createObjectURL(audioBlob));
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="avatar-card bg-white p-6 rounded-xl shadow-lg transform hover:rotate-2 hover:-rotate-1 hover:scale-105 transition-transform duration-500 ease-out perspective-1000">
-        <div className="avatar-content text-center">
-          {/* Avatar Image */}
-          <img
-            src="/avatar.png"
-            alt="AI Avatar"
-            className="w-24 h-24 mx-auto rounded-full shadow-2xl transform transition-transform duration-500 hover:rotate-6 hover:scale-110"
-          />
-          <div className="mt-4">
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="w-full p-3 mt-3 text-lg border rounded-lg shadow-inner resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              onClick={handleSendMessage}
-              className="mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg transform hover:-translate-y-1 hover:shadow-xl transition-transform duration-300"
-            >
-              Send
-            </button>
-          </div>
-          <div className="mt-4 text-gray-800 text-lg">
-            <p>{response}</p>
-          </div>
-        </div>
+    <div className="p-4 border rounded shadow-md">
+      <div className="avatar mb-4">
+        {/* You can replace this with an actual avatar image */}
+        <img src="/avatar.png" alt="Avatar" className="w-24 h-24 rounded-full" />
+      </div>
+      <div className="message-input mb-4">
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full p-2 border rounded"
+          placeholder="Ask me anything..."
+        />
+        <button onClick={handleSubmit} className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
+          Send
+        </button>
+      </div>
+      <div className="response">
+        <p>{response}</p>
+        {audioUrl && <audio src={audioUrl} controls autoPlay />}
       </div>
     </div>
   );
 };
 
-export default Avatar3D;
+export default Avatar;

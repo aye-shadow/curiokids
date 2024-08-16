@@ -1,15 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import axios from 'axios';
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const { message } = await req.json();
-
-    const assistantId = process.env.NEXT_PUBLIC_ASSISTANT_ID;
-
-    if (!assistantId) {
-      throw new Error('Assistant ID is not defined in environment variables.');
-    }
+    const assistantId = process.env.ASSISTANT_ID; // secure it by not exposing it publicly
 
     const response = await axios.post(
       `https://api.openai.com/v1/assistants/${assistantId}/messages`,
@@ -19,7 +14,7 @@ export async function POST(req: NextRequest) {
       },
       {
         headers: {
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           'Content-Type': 'application/json',
         },
       }

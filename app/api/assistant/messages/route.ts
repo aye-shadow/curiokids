@@ -5,10 +5,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     try {
       const { message } = req.body;
+      const assistantId = process.env.ASSISTANT_ID;
 
-      // Example API call to OpenAI or another service
       const response = await axios.post(
-        `https://api.openai.com/v1/assistants/YOUR_ASSISTANT_ID/messages`,
+        `https://api.openai.com/v1/assistants/${assistantId}/messages`,
         {
           content: message,
           role: 'user',

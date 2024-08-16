@@ -1,15 +1,10 @@
-'use client'
-import React from 'react'
-import AvatarWithQuiz from './Talking Ai/AvatarwithQuiz'
+import Avatar from "./Talking Ai/Avatar";
+import AvatarWithQuiz from "./Talking Ai/AvatarwithQuiz";
 
-const page= ({}) => {
- 
-
+export default function Home() {
   return (
-    <div className=''>
-         <AvatarWithQuiz />
-    </div>
-  )
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <AvatarWithQuiz />
+    </main>
+  );
 }
-
-export default page
