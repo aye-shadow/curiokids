@@ -1,4 +1,4 @@
-const getOpenAIResponse = async (userInput: string): Promise<string> => {
+export const getOpenAIResponse = async (userInput: string): Promise<string> => {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
