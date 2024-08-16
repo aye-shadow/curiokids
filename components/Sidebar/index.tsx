@@ -30,7 +30,7 @@ const Sidebar = ({ isQuizActive, cancelQuiz }: any) => {
   const renderComponent = () => {
     switch (activeComponent) {
       case 'Home':
-        return <Home />;
+        return <AI />;
       case 'Library':
         return <Library />;
       case 'Quiz':
@@ -38,7 +38,7 @@ const Sidebar = ({ isQuizActive, cancelQuiz }: any) => {
       case 'Report':
         return <Report />;
       case 'AI':
-        return <AI />;
+        return <Home />;
       case 'Leader Board':
         return <LeaderBoard />;
       case 'Updates':
