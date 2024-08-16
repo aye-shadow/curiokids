@@ -88,7 +88,7 @@ const AvatarWithQuiz = () => {
         <div className="quiz-card bg-white p-6 rounded-xl shadow-lg transform hover:rotate-2 hover:scale-105 transition-transform duration-500 ease-out perspective-1000 mt-8">
           <h3 className="text-xl font-bold mb-4">{quiz.question}</h3>
           <div className="space-y-4">
-            {quiz.options.map((option, index) => (
+            {quiz.options.map((option: any, index: any) => (
               <label
                 key={index}
                 className="flex items-center space-x-3 cursor-pointer"
