@@ -6,7 +6,7 @@ const getOpenAIResponse = async (userInput: string): Promise<string> => {
         "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-4", // You can specify the model, e.g., "gpt-4"
+        model: "gpt-3.5-turbo", // You can specify the model, e.g., "gpt-4"
         messages: [{ role: "user", content: userInput }],
         max_tokens: 150, // Adjust the token limit according to your needs
       }),
