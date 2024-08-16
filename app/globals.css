@@ -11,6 +11,46 @@ body {
   line-height: normal;
 }
 
+
+.avatar-card {
+  perspective: 1000px;
+  perspective-origin: center;
+}
+
+.avatar-card:hover .avatar-content {
+  transform: rotateY(15deg) rotateX(5deg);
+}
+
+.avatar-content {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+@keyframes bounce-limited {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  10%, 90% {
+    transform: translateY(-15px);
+  }
+  20%, 80% {
+    transform: translateY(10px);
+  }
+  30%, 70% {
+    transform: translateY(-10px);
+  }
+  40%, 60% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce-limited {
+  animation: bounce-limited 4s ease-out forwards;
+}
+
+
 .feather {
   width: 1em;
   height: 1em;
