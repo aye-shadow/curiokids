@@ -176,8 +176,10 @@ const AI = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`p-4 rounded-xl w-full md:w-3/4 lg:w-3/5 ${
+             className={`p-4 rounded-xl w-full md:w-3/4 lg:w-3/5 ${
               message.sender === "user"
+                ? "bg-[#81C784] text-white self-end animate-bounce-limited"
+                : "bg-[#AED581] text-[#2C6E49] self-start animate-bounce-limited"
                 ? "bg-[#81C784] text-white self-end"
                 : "bg-[#AED581] text-[#2C6E49] self-start"
             }`}
